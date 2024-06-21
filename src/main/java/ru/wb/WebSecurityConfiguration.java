@@ -87,6 +87,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public KerberosServiceAuthenticationProvider kerberosServiceAuthenticationProvider() {
+        log.info("Initializing KerberosServiceAuthenticationProvider");
         KerberosServiceAuthenticationProvider provider =
                 new KerberosServiceAuthenticationProvider();
         provider.setTicketValidator(sunJaasKerberosTicketValidator());
@@ -94,8 +95,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return provider;
     }
 
+    //TODO Падает здесь с ошибкой -
     @Bean
     public SunJaasKerberosTicketValidator sunJaasKerberosTicketValidator() {
+        log.info("Initializing SunJaasKerberosTicketValidator");
         SunJaasKerberosTicketValidator ticketValidator =
                 new SunJaasKerberosTicketValidator();
         ticketValidator.setServicePrincipal(servicePrincipal); //At this point, it must be according to what we were given in the
