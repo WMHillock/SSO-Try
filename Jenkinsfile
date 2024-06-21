@@ -47,7 +47,7 @@ pipeline {
                         echo 'Starting Build stage'
                         sh 'mvn clean'
                         echo 'Maven clean completed'
-                        sh "mvn package -DskipTests"
+                        sh "mvn package"
                         echo 'Maven build completed'
                     } catch (Exception e) {
                         echo "Build failed: ${e.getMessage()}"
