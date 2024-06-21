@@ -9,7 +9,7 @@ pipeline {
     }
 
     tools {
-        maven 'Maven 3.9.6' // Укажите имя Maven установки, настроенной в Jenkins
+        maven 'MyMaven' // Укажите имя Maven установки, настроенной в Jenkins
     }
 
     stages {
