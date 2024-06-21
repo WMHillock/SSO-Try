@@ -4,7 +4,6 @@ pipeline {
     environment {
         containerName = 'sso' //Измените на свое название сервиса
         containerPort = 16666 //Измените на порт
-        networkName = 'fpa-network'
         imageName = "fpa/${containerName}:latest"
     }
 
@@ -71,7 +70,7 @@ pipeline {
             steps {
                 script {
                     echo "Starting Deploy stage for container: ${containerName}"
-                    sh "docker run -d --name ${containerName} --network ${networkName} -p ${containerPort}:${containerPort} ${imageName}"
+                    sh "docker run -d --name ${containerName} -p ${containerPort}:${containerPort} ${imageName}"
                     echo "Container '${containerName}' deployed"
                 }
             }
