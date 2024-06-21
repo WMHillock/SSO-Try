@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        containerName = 'SSO-Try' //Измените на свое название сервиса
+        containerName = 'SSOTry' //Измените на свое название сервиса
         containerPort = 16666 //Измените на порт
         networkName = 'fpa-network'
         imageName = "fpa/${containerName}:latest"
