@@ -1,4 +1,3 @@
-//TrigerCheck
 pipeline {
     agent any
 
@@ -9,35 +8,33 @@ pipeline {
         imageName = "fpa/${containerName}:latest"
     }
 
+    tools {
+        maven 'Maven 3.9.6' // Укажите имя Maven установки, настроенной в Jenkins
+    }
+
     stages {
         stage('Preparation') {
             steps {
                 script {
                     echo "Stopping container: ${containerName}"
-                    script {
-                        try {
-                            sh "docker container stop ${containerName}"
-                        } catch (Exception e) {
-                            echo "Container ${containerName} is not running or does not exist."
-                        }
+                    try {
+                        sh "docker container stop ${containerName}"
+                    } catch (Exception e) {
+                        echo "Container ${containerName} is not running or does not exist."
                     }
 
                     echo "Removing container: ${containerName}"
-                    script {
-                        try {
-                            sh "docker rm ${containerName}"
-                        } catch (Exception e) {
-                            echo "Container ${containerName} does not exist."
-                        }
+                    try {
+                        sh "docker rm ${containerName}"
+                    } catch (Exception e) {
+                        echo "Container ${containerName} does not exist."
                     }
 
                     echo "Removing image: ${imageName}"
-                    script {
-                        try {
-                            sh "docker rmi ${imageName}"
-                        } catch (Exception e) {
-                            echo "Image ${imageName} does not exist."
-                        }
+                    try {
+                        sh "docker rmi ${imageName}"
+                    } catch (Exception e) {
+                        echo "Image ${imageName} does not exist."
                     }
                 }
             }
