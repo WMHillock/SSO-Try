@@ -15,4 +15,11 @@ public class HomeController {
         return modelAndView;
     }
 
+    @GetMapping
+    public ModelAndView logged(ModelAndView modelAndView) {
+        modelAndView.setViewName("guest");
+        return modelAndView;
+    }
+
+
 }
