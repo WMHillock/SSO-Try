@@ -19,7 +19,7 @@ import org.springframework.security.kerberos.web.authentication.SpnegoEntryPoint
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.util.Assert;
 
-@Slf4j //Lombok annotation for logging
+@Slf4j
 @Configuration
 @EnableWebMvcSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {

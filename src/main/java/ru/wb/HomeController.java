@@ -15,7 +15,7 @@ public class HomeController {
         return modelAndView;
     }
 
-    @GetMapping
+    @GetMapping("/guest")
     public ModelAndView logged(ModelAndView modelAndView) {
         modelAndView.setViewName("guest");
         return modelAndView;
