@@ -71,7 +71,7 @@ pipeline {
             steps {
                 script {
                     echo "Starting Deploy stage for container: ${containerName}"
-                    sh "docker run -d --name ${containerName} --network ${networkName} -e SPRING_PROFILES_ACTIVE=${springProfile} -p ${containerPort}:${containerPort} ${imageName}"
+                    sh "docker run -d --name ${containerName} --network ${networkName} -p ${containerPort}:${containerPort} ${imageName}"
                     echo "Container '${containerName}' deployed"
                 }
             }
