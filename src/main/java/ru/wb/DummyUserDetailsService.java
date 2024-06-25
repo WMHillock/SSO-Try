@@ -14,7 +14,7 @@ public class DummyUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
         log.info(username);
-        return new User(username, "notUsed", true, true, true, true,
+        return new User(username, "password", true, true, true, true,
                 AuthorityUtils.createAuthorityList("ROLE_USER", "ROLE_ADMIN"));
     }
 }

@@ -95,7 +95,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return provider;
     }
 
-    //TODO Падает здесь с ошибкой -
+    //TODO Падает здесь с ошибкой
     @Bean
     public SunJaasKerberosTicketValidator sunJaasKerberosTicketValidator() {
         log.info("Initializing SunJaasKerberosTicketValidator");
