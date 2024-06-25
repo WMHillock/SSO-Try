@@ -40,14 +40,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
+                .addFilterBefore(
+                        spnegoAuthenticationProcessingFilter(),
+                        BasicAuthenticationFilter.class)
                 .formLogin()
                 .and()
                 .logout()
-                .permitAll()
-                .and()
-                .addFilterBefore(
-                        spnegoAuthenticationProcessingFilter(),
-                        BasicAuthenticationFilter.class);
+                .permitAll();
     }
 
     @Override
@@ -70,7 +69,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public SpnegoEntryPoint spnegoEntryPoint() {
-        return new SpnegoEntryPoint("/");
+        return new SpnegoEntryPoint("/guest");
     }
 
     @Bean
