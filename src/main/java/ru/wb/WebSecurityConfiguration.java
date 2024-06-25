@@ -78,6 +78,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 new SpnegoAuthenticationProcessingFilter();
         try {
             filter.setAuthenticationManager(authenticationManagerBean());
+            filter.setSuccessHandler((request, response, authentication) -> {
+                log.info("SPNEGO Authentication succeeded for user: " + authentication.getName());
+            });
+            filter.setFailureHandler((request, response, exception) -> {
+                log.error("SPNEGO Authentication failed: " + exception.getMessage());
+            });
         } catch (Exception e) {
             log.error("Failed to set AuthenticationManager on SpnegoAuthenticationProcessingFilter.", e);
         }
